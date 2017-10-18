@@ -7,3 +7,8 @@ export const updateApplication = (index, application) => ({
   type: 'UPDATE_APPLICATION',
   payload: { application, index }
 });
+
+export const loadFromStorage = (data) => ({
+  type: 'LOAD_FROM_LOCAL_STORAGE',
+  payload: data
+});

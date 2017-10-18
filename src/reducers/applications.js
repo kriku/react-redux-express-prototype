@@ -1,5 +1,7 @@
 function reducer(state=[], action) {
   switch (action.type) {
+  case 'LOAD_FROM_LOCAL_STORAGE':
+    return action.payload;
   case 'ADD_DRAFT_TO_APPLICATIONS':
     return state.concat({
       quiz: action.payload.quiz
