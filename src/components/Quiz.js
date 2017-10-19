@@ -3,51 +3,151 @@ import {
   Form,
   Field,
   reduxForm,
-  formValueSelector
+  getFormSyncErrors
 } from 'redux-form';
 import { connect } from 'react-redux';
 import { RadioField } from './inputs';
+import { quizErrorMessages } from '../validation/quiz';
 
-const selector = formValueSelector('tuQuestions');
-
-const subButton = (props) => {
-  if (props.online === 'yes')
-    return <button type="submit">Submit</button>
-  return null;
-}
+const validate = values => {
+  const errors = {};
+  const required = (field) => {
+    if (!values[field])
+      errors[field] = quizErrorMessages[field];
+  }
+  required('applicant');
+  required('representative');
+  required('consumption');
+  required('owner');
+  required('transfer');
+  required('nko_use');
+  return errors;
+};
 
 const ConnectedButton = connect(
   state => ({
-    online: selector(state, 'online')
+    disabled: getFormSyncErrors('tuQuestions')(state)
   })
-)(subButton);
+)(props => (
+  <button type="submit" disabled={props.disabled}>
+    Заполнить анкету
+  </button>
+));
 
-class Questionnaire extends Component {
+
+class Quiz extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={ handleSubmit }>
-        <Field name="field0"
-                type="radio"
-                caption="yes"
-                value="yes"
-                component={RadioField} />
-        <Field name="field0"
-                type="radio"
-                caption="no"
-                value="no"
-                component={RadioField} />
-        <br/>
-        <Field name="online"
-                type="radio"
-                caption="offline"
-                value="no"
-                component={RadioField} />
-        <Field name="online"
-                type="radio"
-                caption="online"
-                value="yes"
-                component={RadioField} />
+        <div>
+          Заявитель (юридический статус):
+        </div>
+        <div>
+          <Field name="applicant"
+                 caption="Юридическое лицо"
+                 type="radio"
+                 value="legal"
+                 component={RadioField} />
+          <Field name="applicant"
+                 caption="Физическое лицо"
+                 type="radio"
+                 value="ordinary"
+                 component={RadioField} />
+        </div>
+        <div>
+          Заявка подается представителем заявителя?
+        </div>
+        <div>
+          <Field name="representative"
+                 caption="Да"
+                 type="radio"
+                 value="true"
+                 component={RadioField} />
+          <Field name="representative"
+                 caption="Нет"
+                 type="radio"
+                 value="false"
+                 component={RadioField} />
+        </div>
+        <div>
+          Какова величина максимального часового расхода газа?
+        </div>
+        <div>
+          <Field name="consumption"
+                 caption="Менее 5 м3"
+                 type="radio"
+                 value="less5"
+                 component={RadioField} />
+          <Field name="consumption"
+                 caption="От 5 до 300 м3"
+                 type="radio"
+                 value="5to300"
+                 component={RadioField} />
+          <Field name="consumption"
+                 caption="Более 300 м3"
+                 type="radio"
+                 value="greater300"
+                 component={RadioField} />
+          <Field name="consumption"
+                 caption="Не знаю, требуется расчёт"
+                 type="radio"
+                 value="idk"
+                 component={RadioField} />
+        </div>
+        <div>
+          Владелец сетей газораспределения АО “Газпром ТрансГаз Казань”?
+        </div>
+        <div>
+          <Field name="owner"
+                 caption="Да"
+                 type="radio"
+                 value="true"
+                 component={RadioField} />
+          <Field name="owner"
+                 caption="Нет"
+                 type="radio"
+                 value="false"
+                 component={RadioField} />
+          <Field name="owner"
+                 caption="Не знаю"
+                 type="radio"
+                 value="idk"
+                 component={RadioField} />
+        </div>
+        <div>
+          Предполагается уступка права на использование мощности?
+        </div>
+        <div>
+          <Field name="transfer"
+                 caption="Да"
+                 type="radio"
+                 value="true"
+                 component={RadioField} />
+          <Field name="transfer"
+                 caption="Нет"
+                 type="radio"
+                 value="false"
+                 component={RadioField} />
+        </div>
+        <div>
+          Предполагается ли использование объектов инфраструктуры и другого имущества общего пользования НКО?
+        </div>
+        <div>
+          <Field name="nko_use"
+                 caption="Да"
+                 type="radio"
+                 value="true"
+                 component={RadioField} />
+          <Field name="nko_use"
+                 caption="Нет"
+                 type="radio"
+                 value="false"
+                 component={RadioField} />
+        </div>
+
+        <hr/>
+
         <ConnectedButton />
       </Form>
     );
@@ -55,5 +155,6 @@ class Questionnaire extends Component {
 }
 
 export default reduxForm({
-  form: 'tuQuestions'
-})( Questionnaire );
+  form: 'tuQuestions',
+  validate
+})( Quiz );

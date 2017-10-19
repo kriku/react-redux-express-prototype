@@ -29,8 +29,7 @@ class Tu extends Component {
 
     return (
       <div>
-        <h3>TU Form:</h3>
-        <p> The provision of technical conditions </p>
+        <h3>Запрос о предоставлении технических условий</h3>
         <Quiz onSubmit={this.submit.bind(this)}/>
         <ApplicationRedirect />
       </div>

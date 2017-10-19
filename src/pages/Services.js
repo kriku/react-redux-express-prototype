@@ -13,8 +13,8 @@ class Services extends Component {
         <header className="App-header">
           <h1 className="App-title">Services</h1>
         </header>
-        <Link to='/services/tu'>Tu</Link>
-        {' '}
+        <Link to='/services/tu'>Запрос о предоставлении технических условий</Link>
+        <br/>
         <Link to='/services/another'>Another service</Link>
         <Route
             path={match.url + '/tu'}

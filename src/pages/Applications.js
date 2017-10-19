@@ -10,7 +10,9 @@ class Applications extends Component {
       return applications.map((application, index) => (
         <div>
           <Link key={ index } to={'/application/' + index}>
-            { JSON.stringify(applications[index], null, 2) }
+            <pre>
+              { JSON.stringify(applications[index], null, 2) }
+            </pre>
           </Link>
           <hr/>
         </div>
