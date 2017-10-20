@@ -100,7 +100,7 @@ class Application extends Component {
                caption="Комментарий"
                component={ TextField } />
 
-        <button type="submit">Submit</button>
+        <button type="submit">Save and go to files</button>
         <hr/>
       </Form>
     );
@@ -108,5 +108,5 @@ class Application extends Component {
 }
 
 export default reduxForm({
-  form: 'TuApplicationForm'
+  form: 'TuBaseForm'
 })( Application );

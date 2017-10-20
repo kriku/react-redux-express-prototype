@@ -11,10 +11,18 @@ class ApplicationForm extends Component {
     this.state = {page: 'base'}
   }
 
-  submit(data) {
+  submitBase(data) {
+    this.setState({page: 'file'});
     const { application, id } = this.props;
     const index = parseInt(id, 10);
     const updated = { ...application, data };
+    store.dispatch(updateApplication(index, updated));
+  }
+
+  submitFile(files) {
+    const { application, id } = this.props;
+    const index = parseInt(id, 10);
+    const updated = { ...application, files };
     store.dispatch(updateApplication(index, updated));
   }
 
@@ -26,11 +34,13 @@ class ApplicationForm extends Component {
         <button onClick={() => this.setState({page: 'base'})}>BaseForm</button>
         <button onClick={() => this.setState({page: 'file'})}>FileForm</button>
         { page === 'base' && <BaseForm
-                                 onSubmit={ this.submit.bind(this) }
+                                 onSubmit={ this.submitBase.bind(this) }
                                  quiz={ application.quiz }
                                  initialValues={ application.data } />
         }
-        { page === 'file' && <FileForm /> }
+        { page === 'file' && <FileForm
+                                 quiz={ application.quiz }
+                                 onSubmit={ this.submitFile.bind(this) } /> }
       </div>
     );
   }
