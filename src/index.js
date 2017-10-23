@@ -13,6 +13,7 @@ import Application from './pages/Application';
 import Applications from './pages/Applications';
 
 import Nav from './components/Nav';
+/* import Footer from './components/Footer';*/
 
 import './index.css';
 
@@ -23,13 +24,15 @@ const root = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <div>
-        <Nav />
-        <Route exact path="/" component={App} />
-        <Route path="/login" component={Login} />
-        <Route path="/services" component={Services} />
-        <Route path="/applications" component={Applications} />
-        <Route path="/application/:id" component={Application} />
+      <div className="content">
+        <main className="wrapper">
+          <Nav />
+          <Route exact path="/" component={App} />
+          <Route path="/login" component={Login} />
+          <Route path="/services" component={Services} />
+          <Route path="/applications" component={Applications} />
+          <Route path="/application/:id" component={Application} />
+        </main>
       </div>
     </Router>
   </Provider>, root);

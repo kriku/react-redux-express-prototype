@@ -1,9 +1,21 @@
 .App {
   /* text-align: center; */
 }
+.App.center {
+  text-align: center;
+}
+
+header table {
+  display: inline-block;
+}
+
+table button {
+  width: 100%;
+}
 
 .App-header {
-  background-color: #222;
+
+  background-color: #007AC2;
   padding: 2em;
   color: white;
 }

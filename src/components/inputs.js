@@ -4,10 +4,12 @@ export class RadioField extends Component {
   render() {
     const { input, caption } = this.props;
     return (
-      <div>
+      <div className="input-group-radio">
         <label>
           <input {...input} type="radio"/>
-          { caption }
+          <span>
+            { caption }
+          </span>
         </label>
       </div>
     );
@@ -17,11 +19,14 @@ export class RadioField extends Component {
 export class CheckField extends Component {
   render() {
     const { input, caption } = this.props;
+    console.log(input);
     return (
-      <div>
+      <div className="input-group-checkbox">
         <label>
-          <input {...input} type="checkbox"/>
-          { caption }
+          <input {...input} checked={input.value} type="checkbox"/>
+          <span>
+            { caption }
+          </span>
         </label>
       </div>
     );
@@ -32,11 +37,11 @@ export class TextField extends Component {
   render() {
     const { input, caption } = this.props;
     return (
-      <div>
+      <div className="input-group">
         <label>
-          <div>
+          <span>
             { caption }
-          </div>
+          </span>
           <input {...input} type="text"/>
         </label>
       </div>

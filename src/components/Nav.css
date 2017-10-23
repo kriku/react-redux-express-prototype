@@ -1,0 +1,17 @@
+.navbar {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #007AC2;
+}
+
+.navbar a {
+  display: inline-block;
+  padding: 1em;
+  text-decoration: none;
+  color: #007AC2;
+}
+
+a.active {
+  background-color: #007AC2;
+  color: white;
+}
+

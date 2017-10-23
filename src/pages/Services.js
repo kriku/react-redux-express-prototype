@@ -10,12 +10,9 @@ class Services extends Component {
     const { match } = this.props;
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Services</h1>
-        </header>
-        <Link to='/services/tu'>Запрос о предоставлении технических условий</Link>
-        <br/>
-        <Link to='/services/another'>Another service</Link>
+        <Link to='/services/tu' className='h2'>
+          Запрос о предоставлении технических условий
+        </Link>
         <Route
             path={match.url + '/tu'}
             component={Tu} />

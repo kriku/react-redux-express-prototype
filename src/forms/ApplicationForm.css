@@ -1,0 +1,62 @@
+.pointers>button {
+    padding: 0 0.5em 0 2.5em;
+    height: 3em;
+    position: relative;
+    background: white;
+    margin-right: 0.5em;
+}
+
+.pointers>button:hover {
+    background: white;
+}
+
+.pointers>button:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 1.5em solid white;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    z-index: 1;
+}
+
+.pointers>button:first-child {
+    padding: 0 0 0 1em;
+}
+
+.pointers>button:first-child:after {
+    border: none;
+}
+
+.pointers>button:before {
+    content: "";
+    position: absolute;
+    right: -1.5em;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 1.5em solid white;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    z-index: 2;
+}
+
+.pointers>button.done {
+  background: #7FDBFF;
+  color: white;
+}
+.pointers>button.done:before {
+  border-left: 1.5em solid #7FDBFF;
+}
+
+.pointers>button.active {
+  background: #007AC2;
+  color: white;
+}
+.pointers>button.active:before {
+    border-left: 1.5em solid #007AC2;
+}
+

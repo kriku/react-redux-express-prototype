@@ -26,11 +26,11 @@ const validate = values => {
 
 const ConnectedButton = connect(
   state => ({
-    disabled: getFormSyncErrors('tuQuestions')(state)
+    disabled: !getFormSyncErrors('tuQuestions')(state)
   })
 )(props => (
-  <button type="submit" disabled={props.disabled}>
-    Заполнить анкету
+  <button className="primary" type="submit" disabled={!props.disabled}>
+    Перейти к подаче заявления
   </button>
 ));
 
@@ -40,9 +40,9 @@ class Quiz extends Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={ handleSubmit }>
-        <div>
+        <p>
           Заявитель (юридический статус):
-        </div>
+        </p>
         <div>
           <Field name="applicant"
                  caption="Юридическое лицо"
@@ -55,9 +55,9 @@ class Quiz extends Component {
                  value="ordinary"
                  component={RadioField} />
         </div>
-        <div>
+        <p>
           Заявка подается представителем заявителя?
-        </div>
+        </p>
         <div>
           <Field name="representative"
                  caption="Да"
@@ -70,9 +70,9 @@ class Quiz extends Component {
                  value="false"
                  component={RadioField} />
         </div>
-        <div>
+        <p>
           Какова величина максимального часового расхода газа?
-        </div>
+        </p>
         <div>
           <Field name="consumption"
                  caption="Менее 5 м3"
@@ -95,9 +95,9 @@ class Quiz extends Component {
                  value="idk"
                  component={RadioField} />
         </div>
-        <div>
+        <p>
           Владелец сетей газораспределения АО “Газпром ТрансГаз Казань”?
-        </div>
+        </p>
         <div>
           <Field name="owner"
                  caption="Да"
@@ -115,9 +115,9 @@ class Quiz extends Component {
                  value="idk"
                  component={RadioField} />
         </div>
-        <div>
+        <p>
           Предполагается уступка права на использование мощности?
-        </div>
+        </p>
         <div>
           <Field name="transfer"
                  caption="Да"
@@ -130,9 +130,9 @@ class Quiz extends Component {
                  value="false"
                  component={RadioField} />
         </div>
-        <div>
+        <p>
           Предполагается ли использование объектов инфраструктуры и другого имущества общего пользования НКО?
-        </div>
+        </p>
         <div>
           <Field name="nko_use"
                  caption="Да"

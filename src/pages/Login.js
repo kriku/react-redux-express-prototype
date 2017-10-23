@@ -10,24 +10,35 @@ class Login extends Component {
   render() {
     const { user } = this.props;
     return (
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Login</h1>
+        <div className="App center">
+          <header>
+            <table style={{marginTop: '10%'}}>
+              <tbody>
+                <tr>
+                  <td>Почта</td>
+                  <td>
+                    <input value={user.email}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Пароль</td>
+                  <td>
+                    <input value={user.password}/>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2">
+                    <button
+                        onClick={this.sign_in.bind(this)}>
+                      Войти
+                    </button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </header>
-          <label>
-            email:
-            <input value={user.email}/>
-          </label>
-          <br/>
-          <label>
-            password:
-            <input value={user.password}/>
-          </label>
-          <br/>
-          <button
-              onClick={this.sign_in.bind(this)}>
-            signin
-          </button>
         </div>
     );
   }

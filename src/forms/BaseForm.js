@@ -8,7 +8,6 @@ import {
 } from 'redux-form';
 import { TextField, CheckField } from '../components/inputs.js';
 import Address from './sections/Address';
-import Construction from './sections/Construction';
 
 const Person = (props) => (
   <div>
@@ -30,7 +29,7 @@ const Legal = (props) => (
            caption="Название компании"
            component={ TextField }/>
     <Field name="shortname"
-           caption="Сокращенное наименование (если имеется)"
+           caption="Сокращенное наименование"
            component={ TextField }/>
     <Field name="form"
            caption="Организационно-правовая форма"
@@ -67,18 +66,6 @@ class Application extends Component {
         {applicant === 'legal' && <Legal />}
         {applicant === 'ordinary' && <Person />}
 
-        <div> Юридический адрес </div>
-        <FormSection name="address.legal">
-          <Address />
-        </FormSection>
-
-        <div> Фактический адрес </div>
-        <Field name="address.same"
-               caption="Совпадает с юридическим"
-               component={ CheckField } />
-        <RealAddress />
-
-
         <Field name="phone"
                caption="Номер телефона"
                component={ TextField } />
@@ -87,21 +74,23 @@ class Application extends Component {
                caption="Электронная почта"
                component={ TextField } />
 
-        <FormSection name="construction">
-          <Construction />
-        </FormSection>
-
-        <div> Местонахождение объекта недвижимости </div>
-        <FormSection name="construction.address">
+        <h3> Юридический адрес </h3>
+        <FormSection name="address.legal">
           <Address />
         </FormSection>
 
-        <Field name="comment"
-               caption="Комментарий"
-               component={ TextField } />
+        <h3> Фактический адрес </h3>
+        <Field name="address.same"
+               caption="Совпадает с юридическим"
+               component={ CheckField } />
+        <RealAddress />
 
-        <button type="submit">Save and go to files</button>
+
+
         <hr/>
+        <button className="primary" type="submit">
+          Save and go to gasification object
+        </button>
       </Form>
     );
   }

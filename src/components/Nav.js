@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { loadFromStorage } from '../actions/applications.js';
 import store from '../store';
+import './Nav.css';
+
+const mstp = ({ applications }) => ({ applications });
+const ApplicationsCount = connect(mstp)((props) => (
+  <span>({ props.applications.length })</span>
+));
 
 class Nav extends Component {
 
@@ -20,18 +27,27 @@ class Nav extends Component {
 
   render() {
     return (
-      <div>
-        <NavLink exact activeClassName="active" to="/">Home</NavLink>
-        {' '}
-        <NavLink activeClassName="active" to="/services">Services</NavLink>
-        {' '}
-        <NavLink activeClassName="active" to="/applications">Applications</NavLink>
-        {' '}
-        <NavLink activeClassName="active" to="/login">Login</NavLink>
-        {' '}
-        applications:
-        <button onClick={ this.loadFrom.bind(this) }>load</button>
-        <button onClick={ this.saveTo.bind(this) }>save</button>
+      <div className="navbar">
+        <NavLink exact activeClassName="active"
+                 className="button" to="/">
+          Справка
+        </NavLink>
+        <NavLink activeClassName="active"
+                 className="button" to="/services">
+          Услуги
+        </NavLink>
+        <NavLink activeClassName="active"
+                 className="button" to="/applications">
+          Заявления <ApplicationsCount />
+        </NavLink>
+        <NavLink activeClassName="active"
+                 className="button right" to="/login">Вход</NavLink>
+
+        <div className="right">
+          applications:
+          <button onClick={ this.loadFrom.bind(this) }>load</button>
+          <button onClick={ this.saveTo.bind(this) }>save</button>
+        </div>
       </div>
     );
   }
