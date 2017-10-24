@@ -12,7 +12,8 @@ class Tu extends Component {
     this.state = { redirect: false };
   }
 
-  submit(quiz) {
+  submit(data) {
+    const quiz = {...data, date: new Date() };
     store.dispatch(addDraftToApplications(quiz));
     this.setState({ redirect: true });
   }

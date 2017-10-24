@@ -6,9 +6,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Transgas</h1>
+          <h1 className="App-title">Газпром Трансгаз Казань</h1>
         </header>
-        <h3>Description text</h3>
+        <h3>Описание возможностей портала</h3>
       </div>
     );
   }

@@ -11,7 +11,7 @@ body {
   height: 100%;
 }
 p {
-  margin: 1em 0 .5em 0;
+  margin: 1.5em 0 .5em 0;
 }
 .content {
   height: 100%;
@@ -31,8 +31,9 @@ a {
 }
 
 hr {
-  color: #007AC2;
+  border: none;
   margin: 1em 0;
+  border-top: 1px solid #007AC2;
 }
 
 button, .button {
@@ -75,6 +76,10 @@ button:disabled, button:disabled:hover {
   position: relative;
   width: 33%;
   margin-bottom: 1em;
+}
+
+.input-group-radio {
+  margin-bottom: .5em;
 }
 
 .input-group input[type="text"] {

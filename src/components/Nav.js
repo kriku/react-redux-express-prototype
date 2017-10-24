@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { loadFromStorage } from '../actions/applications.js';
+import { logout } from '../actions/user.js';
 import store from '../store';
 import './Nav.css';
 
-const mstp = ({ applications }) => ({ applications });
-const ApplicationsCount = connect(mstp)((props) => (
-  <span>({ props.applications.length })</span>
-));
 
 class Nav extends Component {
 
@@ -25,32 +23,49 @@ class Nav extends Component {
     localStorage.setItem('lastState', lastState);
   }
 
+  logout(history) {
+    store.dispatch(logout());
+    history.replace('/');
+  }
+
   render() {
+    const { history } = this.props;
+    const count = this.props.applications.length;
+    const { signin } = this.props.user;
+    const { username } = this.props.user;
     return (
       <div className="navbar">
-        <NavLink exact activeClassName="active"
-                 className="button" to="/">
+        <NavLink className="button" exact to="/">
           Справка
         </NavLink>
-        <NavLink activeClassName="active"
-                 className="button" to="/services">
-          Услуги
-        </NavLink>
-        <NavLink activeClassName="active"
-                 className="button" to="/applications">
-          Заявления <ApplicationsCount />
-        </NavLink>
-        <NavLink activeClassName="active"
-                 className="button right" to="/login">Вход</NavLink>
+        {(signin) && <span>
+            <NavLink className="button" to="/services">
+              Услуги
+            </NavLink>
+            <NavLink className="button" to="/applications">
+              Заявления <span>({ count })</span>
+            </NavLink>
+        </span>}
 
         <div className="right">
-          applications:
-          <button onClick={ this.loadFrom.bind(this) }>load</button>
-          <button onClick={ this.saveTo.bind(this) }>save</button>
+        {(signin)
+         ? <span>
+          { username }
+           <a className="button"
+              onClick={ this.logout.bind(this, history) }>
+             Выход
+           </a>
+         </span>
+         : <NavLink className="button" to="/login">
+           Войти
+         </NavLink>
+        }
         </div>
+
       </div>
     );
   }
 }
 
-export default Nav;
+const mstp = ({ user, applications }) => ({ user, applications });
+export default withRouter(connect(mstp)( Nav ));

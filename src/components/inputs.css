@@ -1,0 +1,10 @@
+span.required:after {
+  content: '*';
+  display: inline-block;
+  color: red;
+  margin-left: 0.2em;
+}
+
+input.invalid {
+  border-color: red;
+}

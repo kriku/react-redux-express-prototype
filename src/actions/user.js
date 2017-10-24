@@ -1,9 +1,15 @@
-export function signin(email, password) {
+export function signin(username, password) {
   return {
     type: "USER_SIGNIN",
     payload: {
-      email,
+      username,
       password
     }
+  };
+}
+
+export function logout() {
+  return {
+    type: "USER_LOGOUT",
   };
 }

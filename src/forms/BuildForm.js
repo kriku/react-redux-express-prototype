@@ -21,7 +21,7 @@ class BuildForm extends Component {
 
     return (
       <Form onSubmit={ handleSubmit }>
-        <h3>Application Form:</h3>
+        <h3>Газифицируемый объект</h3>
 
 
         <FormSection name="construction">
@@ -32,10 +32,6 @@ class BuildForm extends Component {
         <FormSection name="construction.address">
           <Address />
         </FormSection>
-
-        <Field name="comment"
-               caption="Комментарий"
-               component={ TextField } />
 
         <hr/>
         <button className="primary" type="submit">

@@ -1,47 +1,79 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router';
 import { signin } from '../actions/user';
+import axios from 'axios';
+import store from '../store';
+
+const LoginForm = reduxForm({
+  form: 'LoginForm'
+})(props => (
+  <form onSubmit={ props.handleSubmit } style={{display: "inline-block"}}>
+    <table style={{marginTop: "6em"}}>
+      <tr>
+        <td>Логин</td>
+        <td>
+          <Field name="username"
+                component="input" />
+        </td>
+      </tr>
+      <tr>
+        <td>Пароль</td>
+        <td>
+          <Field name="password"
+                component="input" />
+        </td>
+      </tr>
+      <tr>
+        <td colSpan="2">
+          <button type="submit">Войти</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+));
 
 class Login extends Component {
-  sign_in() {
-    console.log(this.props);
-    this.props.dispatch(signin(this.props.user));
+  submit(data) {
+    console.log(data.username);
+    console.log(data.password);
+    const register = (data) => {
+      axios({
+        method: 'post',
+        url: '/users',
+        data: data
+      }).then((res) => {
+        store.dispatch(signin(data.username, data.password));
+      }).catch((error) => {
+        store.dispatch(signin(data.username, data.password));
+      });
+    }
+    axios({
+      method: 'post',
+      url: '/sessions/create',
+      data: data
+    }).then((res) => {
+      store.dispatch(signin(data.username, data.password, res));
+    }).catch((error) => {
+      register(data);
+    });
+    /* this.props.dispatch(signin(data));*/
   }
   render() {
-    const { user } = this.props;
+    const { signin } = this.props.user;
     return (
-        <div className="App center">
-          <header>
-            <table style={{marginTop: '10%'}}>
-              <tbody>
-                <tr>
-                  <td>Почта</td>
-                  <td>
-                    <input value={user.email}/>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Пароль</td>
-                  <td>
-                    <input value={user.password}/>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="2">
-                    <button
-                        onClick={this.sign_in.bind(this)}>
-                      Войти
-                    </button>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </header>
-        </div>
+      <div>
+        {(!signin)
+          ? <div className="App center">
+            <LoginForm onSubmit={ this.submit.bind(this) }/>
+          </div>
+          : <Redirect to="/" />
+        }
+      </div>
     );
   }
 }
 
-export default connect((state)=>({user: state.user}))( Login );
+const mstp = ({ user }) => ({ user });
+export default connect(mstp)( Login );

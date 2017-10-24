@@ -4,7 +4,7 @@ import {
   Field,
   reduxForm
 } from 'redux-form';
-/* import { FileField } from '../components/inputs.js';*/
+import { TextField } from '../components/inputs.js';
 
 
 export class FileField extends Component {
@@ -51,6 +51,10 @@ class FileForm extends Component {
           <Field name="file"
                  onChange={ this.handleUpload.bind(this) }
                  component={ FileField } />
+
+          <Field name="comment"
+                caption="Комментарий"
+                component={ TextField } />
         </Form>
       </div>
     );

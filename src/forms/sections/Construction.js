@@ -50,21 +50,27 @@ export default class Construction extends Component {
   render() {
     return (
       <div>
-        <div> Состояние объекта </div>
-        <Field name="exploitation"
-               caption="Построен (введен в эксплуатацию)"
-               type="radio"
-               value="ready"
-               component={RadioField} />
-        <Field name="exploitation"
-               caption="На стадии строительства либо проектирования"
-               type="radio"
-               value="pending"
-               component={RadioField} />
+        <p>
+          Состояние объекта
+        </p>
+        <p>
+          <Field name="exploitation"
+                 caption="Построен (введен в эксплуатацию)"
+                 type="radio"
+                 value="ready"
+                 component={RadioField} />
+          <Field name="exploitation"
+                 caption="На стадии строительства либо проектирования"
+                 type="radio"
+                 value="pending"
+                 component={RadioField} />
+        </p>
         {/* TODO: change to datepicker */}
         <ExploitationDate />
 
-        <div> Максимальный часовой расход газа (по точкам) </div>
+        <p>
+          Максимальный часовой расход газа (по точкам)
+        </p>
         <Field name="point" caption="Точка 1" component={ TextField } />
         <FieldArray name="points" component={ Points }/>
 

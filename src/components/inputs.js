@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './inputs.css';
+
 
 export class RadioField extends Component {
   render() {
@@ -6,7 +8,7 @@ export class RadioField extends Component {
     return (
       <div className="input-group-radio">
         <label>
-          <input {...input} type="radio"/>
+          <input {...input} checked={input.checked} type="radio"/>
           <span>
             { caption }
           </span>
@@ -19,7 +21,6 @@ export class RadioField extends Component {
 export class CheckField extends Component {
   render() {
     const { input, caption } = this.props;
-    console.log(input);
     return (
       <div className="input-group-checkbox">
         <label>
@@ -35,14 +36,16 @@ export class CheckField extends Component {
 
 export class TextField extends Component {
   render() {
-    const { input, caption } = this.props;
+    const { input, caption, required, meta } = this.props;
     return (
       <div className="input-group">
         <label>
-          <span>
+          <span className={(required)?'required':''}>
             { caption }
           </span>
-          <input {...input} type="text"/>
+          <input {...input}
+                 className={(meta.touched && meta.invalid)?'invalid':''}
+                 type="text"/>
         </label>
       </div>
     );
@@ -54,10 +57,8 @@ export class FileField extends Component {
     const field = this.props.input.name;
     this.props.field.props.change(field, this.domInput.files[0].name);
     /* field.value = this.domInput.files[0].name;*/
-    console.log(this);
   }
   render() {
-    console.log(this.props);
     return (
       <div>
         <input type="file"

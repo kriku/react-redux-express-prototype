@@ -9,16 +9,24 @@ import {
 import { TextField, CheckField } from '../components/inputs.js';
 import Address from './sections/Address';
 
+const required = value => (value ? undefined : 'Required');
+
 const Person = (props) => (
   <div>
     <Field name="surname"
            caption="Фамилия"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
     <Field name="name"
            caption="Имя"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
     <Field name="middle_name"
            caption="Отчество"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
   </div>
 );
@@ -27,12 +35,18 @@ const Legal = (props) => (
   <div>
     <Field name="name"
            caption="Название компании"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
     <Field name="shortname"
            caption="Сокращенное наименование"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
     <Field name="form"
            caption="Организационно-правовая форма"
+           validate={[required]}
+           required={true}
            component={ TextField }/>
   </div>
 );
@@ -61,17 +75,21 @@ class Application extends Component {
 
     return (
       <Form onSubmit={ handleSubmit }>
-        <h3>Application Form:</h3>
+        <h3>Данные заявителя</h3>
 
         {applicant === 'legal' && <Legal />}
         {applicant === 'ordinary' && <Person />}
 
         <Field name="phone"
                caption="Номер телефона"
+               validate={[required]}
+               required={true}
                component={ TextField } />
 
         <Field name="email"
                caption="Электронная почта"
+               validate={[required]}
+               required={true}
                component={ TextField } />
 
         <h3> Юридический адрес </h3>
@@ -80,9 +98,11 @@ class Application extends Component {
         </FormSection>
 
         <h3> Фактический адрес </h3>
-        <Field name="address.same"
-               caption="Совпадает с юридическим"
-               component={ CheckField } />
+        <p>
+          <Field name="address.same"
+                caption="Совпадает с юридическим"
+                component={ CheckField } />
+        </p>
         <RealAddress />
 
 
