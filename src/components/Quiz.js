@@ -154,6 +154,21 @@ class Quiz extends Component {
                  component={RadioField} />
         </div>
 
+        <p>
+          Подключение осуществляется на земельном участке, правообладателем которого является другой абонент (основной абонент)?
+        </p>
+        <div>
+          <Field name="not_legal_owner"
+                 caption="Да"
+                 type="radio"
+                 value="true"
+                 component={RadioField} />
+          <Field name="not_legal_owner"
+                 caption="Нет"
+                 type="radio"
+                 value="false"
+                 component={RadioField} />
+        </div>
         <hr/>
 
         <ConnectedButton />
