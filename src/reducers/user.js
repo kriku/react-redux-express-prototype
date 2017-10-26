@@ -8,6 +8,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
 
   case USER_SIGNIN:
+    console.log('action.payload.data')
+    console.log(action.payload.data)
     return {
       ...state,
       username: action.payload.username,

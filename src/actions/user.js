@@ -16,12 +16,15 @@ export function createSession(body){
             }
         ).then(
             result => {
-                const {username, password} = body
-                    , {data} = result;
+                const {username, password} = body;
+
                 console.log('/session/create', result);
                 if (result.status - 0 === 200) {
-
-                    signin({ username, password, data });
+                    result.json().then(data => {
+                            console.log(data)
+                            signin({username, password, data, dispatch})
+                        }
+                    )
 
                 } else {
                     // signin({ username, password, data });
@@ -55,10 +58,11 @@ function register(body, dispatch){
         result => {
             console.log('/users', result);
             if (result.status - 0 === 200) {
-                const {username, password} = body
-                    , {data} = result;
+                const {username, password} = body;
 
-                signin({ username, password, data });
+                result.json().then(data => {
+                    signin({username, password, data, dispatch});
+                })
 
             } else {
                 dispatch({
@@ -91,13 +95,13 @@ export function logout() {
   };
 }
 
-function signin({ username, password, data }) {
-    return {
+function signin({ username, password, data, dispatch }) {
+    dispatch({
         type: USER_SIGNIN,
         payload: {
             username,
             password,
             data
         }
-    };
+    });
 }
