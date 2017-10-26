@@ -109,7 +109,7 @@ class Application extends Component {
 
         <hr/>
         <button className="primary" type="submit">
-          Save and go to gasification object
+          Сохранить и перейти к объекту газофикации
         </button>
       </Form>
     );

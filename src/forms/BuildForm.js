@@ -35,7 +35,7 @@ class BuildForm extends Component {
 
         <hr/>
         <button className="primary" type="submit">
-          Save and go to files
+          Сохранить и перейти к документам
         </button>
       </Form>
     );

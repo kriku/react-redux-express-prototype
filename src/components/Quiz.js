@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {
-  Form,
-  Field,
-  reduxForm,
-  getFormSyncErrors
+  Form, Field, reduxForm, getFormSyncErrors, formValues
 } from 'redux-form';
 import { connect } from 'react-redux';
 import { RadioField } from './inputs';
-import { quizErrorMessages } from '../validation/quiz';
+import {
+  quizErrorMessages, quizMessages
+} from '../validation/quiz';
 
 const validate = values => {
   const errors = {};
@@ -21,6 +20,8 @@ const validate = values => {
   required('owner');
   required('transfer');
   required('nko_use');
+  if ('idk' === values['consumption'])
+    errors['consumption'] = quizMessages['idk'];
   return errors;
 };
 
@@ -32,6 +33,12 @@ const ConnectedButton = connect(
   <button className="primary" type="submit" disabled={!props.disabled}>
     Перейти к подаче заявления
   </button>
+));
+
+const ConsumptionMessage = formValues('consumption')(props => (
+  (props.consumption)
+  ? <div> {quizMessages[props.consumption]} </div>
+  : null
 ));
 
 
@@ -94,6 +101,7 @@ class Quiz extends Component {
                  type="radio"
                  value="idk"
                  component={RadioField} />
+          <ConsumptionMessage />
         </div>
         <p>
           Владелец сетей газораспределения АО “Газпром ТрансГаз Казань”?

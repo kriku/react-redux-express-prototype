@@ -81,13 +81,6 @@ class Nav extends Component {
          </NavLink>
         }
         </div>
-
-        <div className="right">
-          applications:
-          <button onClick={ this.loadFrom.bind(this) }>load</button>
-          <button onClick={ this.saveTo.bind(this) }>save</button>
-          <button onClick={ this.test.bind(this, access_token) }>test</button>
-        </div>
       </div>
     );
   }
