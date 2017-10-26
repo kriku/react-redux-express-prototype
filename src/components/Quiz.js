@@ -124,7 +124,7 @@ class Quiz extends Component {
                  component={RadioField} />
         </div>
         <p>
-          Предполагается уступка права на использование мощности?
+          Предполагается ли уступка права на использование мощности?
         </p>
         <div>
           <Field name="transfer"
