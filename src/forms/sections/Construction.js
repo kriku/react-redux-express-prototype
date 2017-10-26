@@ -24,7 +24,7 @@ const Points = ({ fields }) => (
       <button type="button" onClick={() => fields.push()}>Добавить точку</button>
     </div>
   </div>
-)
+);
 
 const PointsJustification = formValues('points')((props) => {
   if (props.points && props.points.length)
@@ -46,8 +46,11 @@ const ExploitationDate = formValues('exploitation')((props) => {
   return null;
 });
 
+
 export default class Construction extends Component {
   render() {
+    console.log('construction', this.props);
+    const { consumption } = this.props.quiz;
     return (
       <div>
         <p>
@@ -68,13 +71,17 @@ export default class Construction extends Component {
         {/* TODO: change to datepicker */}
         <ExploitationDate />
 
-        <p>
-          Максимальный часовой расход газа (по точкам)
-        </p>
-        <Field name="point" caption="Точка 1" component={ TextField } />
-        <FieldArray name="points" component={ Points }/>
+        {
+          (consumption !== 'idk') && <div>
+            <p>
+              Максимальный часовой расход газа (по точкам)
+            </p>
+            <Field name="point" caption="Точка 1" component={ TextField } />
+            <FieldArray name="points" component={ Points }/>
 
-        <PointsJustification />
+            <PointsJustification />
+          </div>
+        }
 
         <Field name="type"
                caption="Наименование объекта (тип)"

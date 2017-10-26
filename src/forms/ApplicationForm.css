@@ -60,3 +60,7 @@
     border-left: 1.5em solid #007AC2;
 }
 
+.preview {
+  max-height: 6em;
+  max-width: 6em;
+}

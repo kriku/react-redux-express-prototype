@@ -32,7 +32,7 @@ ReactDOM.render(
           <Nav />
           <Route exact path="/" component={App} />
           <Route path="/login" component={Login} />
-          <Route path="/services" component={Tu} />
+          <Route path="/services" component={Services} />
           <Route path="/applications" component={Applications} />
           <Route path="/application/:id" component={Application} />
         </main>

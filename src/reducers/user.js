@@ -4,6 +4,14 @@ function reducer(state={}, action) {
     return {
       ...state,
       username: action.payload.username,
+      token: action.payload.data,
+      signin: true
+    };
+  case 'USER_SIGNUP':
+    return {
+      ...state,
+      username: action.payload.username,
+      token: action.payload.data,
       signin: true
     };
   case 'USER_LOGOUT':

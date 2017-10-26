@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import { loadFromStorage } from '../actions/applications.js';
 import { logout } from '../actions/user.js';
 import store from '../store';
@@ -23,6 +24,25 @@ class Nav extends Component {
     localStorage.setItem('lastState', lastState);
   }
 
+  test(token) {
+    const headers = new Headers({
+      'authorization': `Bearer ${token}`
+    });
+    fetch('/api/protected/random-quote', { headers })
+      .then(res => res.text())
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    /* const instance = axios.create({
+     *   headers: {'authorization': `Bearer ${token}`}
+     * });
+     * instance.get('/api/protected/random-quote').then(res => (
+     *   console.log(res)
+     * )).catch(err => (
+     *   console.log(err)
+     * ));*/
+  }
+
   logout(history) {
     store.dispatch(logout());
     history.replace('/');
@@ -31,8 +51,8 @@ class Nav extends Component {
   render() {
     const { history } = this.props;
     const count = this.props.applications.length;
-    const { signin } = this.props.user;
-    const { username } = this.props.user;
+    const { signin, username, token } = this.props.user;
+    const access_token = (token) ? token.access_token : null;
     return (
       <div className="navbar">
         <NavLink className="button" exact to="/">
@@ -62,6 +82,12 @@ class Nav extends Component {
         }
         </div>
 
+        <div className="right">
+          applications:
+          <button onClick={ this.loadFrom.bind(this) }>load</button>
+          <button onClick={ this.saveTo.bind(this) }>save</button>
+          <button onClick={ this.test.bind(this, access_token) }>test</button>
+        </div>
       </div>
     );
   }

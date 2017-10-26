@@ -25,7 +25,7 @@ class BuildForm extends Component {
 
 
         <FormSection name="construction">
-          <Construction />
+          <Construction {...this.props}/>
         </FormSection>
 
         <h3> Местонахождение объекта недвижимости </h3>
