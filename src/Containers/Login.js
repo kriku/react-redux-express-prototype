@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
 import {
   Field,
   reduxForm
@@ -8,6 +9,7 @@ import { Redirect } from 'react-router';
 import { signin } from '../actions/user';
 import axios from 'axios';
 import store from '../store';
+import * as loginApi from "../actions/user";
 
 const validate = values => {
   const errors = {};
@@ -57,35 +59,44 @@ const LoginForm = reduxForm({
 
 class Login extends Component {
   submit(data) {
+    const { createSession } = this.props.actions;
+
     console.log(data.username);
     console.log(data.password);
-    const register = (data) => {
-      axios({
-        method: 'post',
-        url: '/users',
-        data: data
-      }).then((res) => {
-        console.log('/users', res);
-        store.dispatch(signin(data.username, data.password, res.data));
-      }).catch((error) => {
-        console.log('/users', error.response);
-        /* store.dispatch(signin(data.username, data.password));*/
-      });
-    }
-    axios({
-      method: 'post',
-      url: '/sessions/create',
-      data: data
-    }).then((res) => {
-      console.log('/session/create', res);
-      store.dispatch(signin(data.username, data.password, res.data));
-    }).catch((error) => {
-      const { response } = error;
-      console.log(response);
-      register(data);
-    });
+
+    createSession(data)
+
+    // const register = (data) => {
+    //   signin(data);
+    //
+    //   // axios({
+    //   //   method: 'post',
+    //   //   url: '/users',
+    //   //   data: data
+    //   // }).then((res) => {
+    //   //   console.log('/users', res);
+    //   //   store.dispatch(signin(data.username, data.password, res.data));
+    //   // }).catch((error) => {
+    //   //   console.log('/users', error.response);
+    //   //   /* store.dispatch(signin(data.username, data.password));*/
+    //   // });
+    // };
+
+    // axios({
+    //   method: 'post',
+    //   url: '/sessions/create',
+    //   data: data
+    // }).then((res) => {
+    //   console.log('/session/create', res);
+    //   store.dispatch(signin(data.username, data.password, res.data));
+    // }).catch((error) => {
+    //   const { response } = error;
+    //   console.log(response);
+    //   register(data);
+    // });
     /* this.props.dispatch(signin(data));*/
   }
+
   render() {
     const { signin } = this.props.user;
     return (
@@ -101,5 +112,13 @@ class Login extends Component {
   }
 }
 
-const mstp = ({ user }) => ({ user });
-export default connect(mstp)( Login );
+const mapStateToProps = ({ user }) => ({ user });
+
+function mapDispatchToProps(dispatch) {
+    const actions = loginApi;
+    return {
+        actions: bindActionCreators(actions, dispatch),
+    }
+}
+
+export default connect(mapStateToProps ,mapDispatchToProps)( Login );
