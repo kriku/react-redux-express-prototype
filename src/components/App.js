@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
-import './App.css';
+import '../style/App.css';
 
 class App extends Component {
   render() {

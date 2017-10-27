@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import { TextField } from '../../components/inputs';
+import { TextField } from '../inputs';
 
 const required = value => (value ? undefined : 'Required');
 

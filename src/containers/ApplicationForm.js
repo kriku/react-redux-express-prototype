@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseForm from './BaseForm';
-import BuildForm from './BuildForm';
-import FileForm from './FileForm';
-import './ApplicationForm.css';
+import BaseForm from '../components/BaseForm';
+import BuildForm from '../components/BuildForm';
+import FileForm from '../components/FileForm';
+import '../style/ApplicationForm.css';
 
 import store from '../store';
 import { updateApplication } from '../actions/applications';
