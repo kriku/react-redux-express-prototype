@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
           <h1 className="App-title">Газпром Трансгаз Казань</h1>
         </header>
         <h3>Описание возможностей портала</h3>
+        <Redirect to="/services" />
       </div>
     );
   }

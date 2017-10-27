@@ -7,6 +7,7 @@ import { RadioField } from './inputs';
 import {
   quizErrorMessages, quizMessages
 } from '../validation/quiz';
+import './Quiz.css';
 
 const validate = values => {
   const errors = {};
@@ -20,6 +21,7 @@ const validate = values => {
   required('owner');
   required('transfer');
   required('nko_use');
+  required('not_legal_owner');
   if ('idk' === values['consumption'])
     errors['consumption'] = quizMessages['idk'];
   return errors;
@@ -37,7 +39,7 @@ const ConnectedButton = connect(
 
 const ConsumptionMessage = formValues('consumption')(props => (
   (props.consumption)
-  ? <div> {quizMessages[props.consumption]} </div>
+  ? <div className="warning-message"> {quizMessages[props.consumption]} </div>
   : null
 ));
 

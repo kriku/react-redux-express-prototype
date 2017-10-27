@@ -55,26 +55,25 @@ class Nav extends Component {
     const access_token = (token) ? token.access_token : null;
     return (
       <div className="navbar">
-        <NavLink className="button" exact to="/">
-          Справка
-        </NavLink>
+        <div className="logo">Логотип</div>
+        <div className="right">
         {(signin) && <span>
-            <NavLink className="button" to="/services">
-              Услуги
+            <NavLink className="button" exact to="/services">
+              Сервисы
             </NavLink>
             <NavLink className="button" to="/applications">
-              Заявления <span>({ count })</span>
+              Ваши запросы <span>({ count })</span>
+            </NavLink>
+            <NavLink className="button" to="/notifications">
+              Уведомления <span>({ count })</span>
             </NavLink>
         </span>}
 
-        <div className="right">
         {(signin)
          ? <span>
-          { username }
-           <a className="button"
-              onClick={ this.logout.bind(this, history) }>
-             Выход
-           </a>
+           <NavLink className="button" to="/profile">
+             { username }
+           </NavLink>
          </span>
          : <NavLink className="button" to="/login">
            Войти
