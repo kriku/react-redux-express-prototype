@@ -79,8 +79,8 @@ class Nav extends Component {
            </NavLink>
          </span>
          : <NavLink className="button" to="/login">
-           Войти
-         </NavLink>
+          Войти
+        </NavLink>
         }
         </div>
       </div>
