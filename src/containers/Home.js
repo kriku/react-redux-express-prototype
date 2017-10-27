@@ -6,13 +6,13 @@ import {
 import { connect } from 'react-redux';
 
 // Containers
-import App from './App';
 import Login from './Login';
 import Profile from './Profile';
 import Application from './Application';
 import Applications from './Applications';
 
 // Components
+import App from '../components/App';
 import Nav from '../components/Nav';
 import Services from '../components/Services';
 import {PrivateRoute} from '../components/PrivateRoute';

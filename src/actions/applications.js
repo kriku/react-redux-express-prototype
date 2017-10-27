@@ -1,6 +1,6 @@
 import {
   ADD_DRAFT_TO_APPLICATIONS, UPDATE_APPLICATION, LOAD_FROM_LOCAL_STORAGE
-} from "../constans/Applications";
+} from "../constants/Applications";
 
 export const addDraftToApplications = (quiz) => ({
   type: ADD_DRAFT_TO_APPLICATIONS,

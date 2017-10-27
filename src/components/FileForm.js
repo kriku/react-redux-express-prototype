@@ -4,7 +4,7 @@ import {
   Field,
   reduxForm
 } from 'redux-form';
-import { documentsNames } from "../Localization/Documents"
+import { documentsNames } from "../localization/Documents"
 import FileField from "./FileField"
 
 class FileForm extends Component {
