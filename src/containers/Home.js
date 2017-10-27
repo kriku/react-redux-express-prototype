@@ -4,12 +4,12 @@ import {
   Route
 } from 'react-router-dom';
 
-import App from '../App';
-import Login from '../Containers/Login';
-import Services from '../pages/Services';
+import App from '../components/App';
+import Login from './/Login';
+import Services from '../components/Services';
 import { connect } from 'react-redux';
-import Application from '../pages/Application';
-import Applications from '../pages/Applications';
+import Application from './Application';
+import Applications from './Applications';
 import Nav from '../components/Nav';
 import {PrivateRoute} from "../components/PrivateRoute";
 

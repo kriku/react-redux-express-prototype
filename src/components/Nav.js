@@ -6,7 +6,7 @@ import axios from 'axios';
 import { loadFromStorage } from '../actions/applications.js';
 import { logout } from '../actions/user.js';
 import store from '../store';
-import './Nav.css';
+import '../style/Nav.css';
 
 
 class Nav extends Component {

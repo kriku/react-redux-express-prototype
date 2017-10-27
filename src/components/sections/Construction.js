@@ -4,7 +4,7 @@ import {
   FieldArray,
   formValues
 } from 'redux-form';
-import { TextField, RadioField } from '../../components/inputs';
+import { TextField, RadioField } from '../inputs';
 
 const Points = ({ fields }) => (
   <div>

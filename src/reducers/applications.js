@@ -1,6 +1,6 @@
 import {
     ADD_DRAFT_TO_APPLICATIONS, UPDATE_APPLICATION, LOAD_FROM_LOCAL_STORAGE
-} from "../Constans/Applications";
+} from "../constans/Applications";
 
 const initialState = [];
 

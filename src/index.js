@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Home from "./Containers/Home"
+import Home from "./containers/Home"
 
-import './index.css';
+import './style/index.css';
 
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';

@@ -3,64 +3,15 @@ import {
   Form,
   Field,
   FormSection,
-  formValues,
   reduxForm
 } from 'redux-form';
-import { TextField, CheckField } from '../components/inputs.js';
+
+import { TextField, CheckField } from './inputs.js';
 import Address from './sections/Address';
-
-const required = value => (value ? undefined : 'Required');
-
-const Person = (props) => (
-  <div>
-    <Field name="surname"
-           caption="Фамилия"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-    <Field name="name"
-           caption="Имя"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-    <Field name="middle_name"
-           caption="Отчество"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-  </div>
-);
-
-const Legal = (props) => (
-  <div>
-    <Field name="name"
-           caption="Название компании"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-    <Field name="shortname"
-           caption="Сокращенное наименование"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-    <Field name="form"
-           caption="Организационно-правовая форма"
-           validate={[required]}
-           required={true}
-           component={ TextField }/>
-  </div>
-);
-
-const RealAddress = formValues({same: 'address.same'})((props) => {
-  if (!props.same)
-    return (
-      <FormSection name="address.real">
-        <Address />
-      </FormSection>
-    );
-  return null;
-});
-
+import {Person} from './Person'
+import {required} from '../utils';
+import {Legal} from './sections/Legal'
+import {RealAddress} from './sections/RealAddress'
 
 class Application extends Component {
 
@@ -104,8 +55,6 @@ class Application extends Component {
                 component={ CheckField } />
         </p>
         <RealAddress />
-
-
 
         <hr/>
         <button className="primary" type="submit">

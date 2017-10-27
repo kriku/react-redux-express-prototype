@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Applications.css';
+import '../style/Applications.css';
 
-const ApplicantInfo = props => {
-  const { application } = props;
-  const info = [];
-  if (application.base) {
-    info.push(<p>
-      Заявитель: {application.base.name}
-    </p>);
-  }
-  return info;
-}
 class Applications extends Component {
   render() {
     const { applications } = this.props;
@@ -41,6 +31,17 @@ class Applications extends Component {
     );
   }
 }
+
+const ApplicantInfo = props => {
+  const { application } = props;
+  const info = [];
+  if (application.base) {
+    info.push(<p>
+      Заявитель: {application.base.name}
+    </p>);
+  }
+  return info;
+};
 
 const mstp = ({ applications }) => ({ applications });
 export default connect(mstp)( Applications );

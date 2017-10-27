@@ -5,7 +5,7 @@ import {
   FormSection,
   reduxForm
 } from 'redux-form';
-import { TextField } from '../components/inputs.js';
+
 import Address from './sections/Address';
 import Construction from './sections/Construction';
 

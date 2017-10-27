@@ -1,6 +1,6 @@
 import {
     USER_SIGNIN, USER_SIGNUP, USER_LOGOUT, USER_REGISTER_FAILED, USER_CREATE_SESSION_FAILED
-} from "../Constans/User";
+} from "../constans/User";
 
 export function createSession(body){
     return (dispatch) => {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import Tu from '../components/Tu';
-import Tp from '../components/Tp';
+import Tu from './Tu';
+import Tp from './Tp';
 
 class Services extends Component {
   render() {
