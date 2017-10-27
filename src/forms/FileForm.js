@@ -5,9 +5,11 @@ import {
   reduxForm
 } from 'redux-form';
 import { TextField } from '../components/inputs.js';
+import { documentsNames } from "../Localization/Documents"
 
 
 export class FileField extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -15,6 +17,7 @@ export class FileField extends Component {
       progress: 0
     };
   }
+
   handleChange(e) {
     console.log('fileField', this);
 		const files = e.target.files;
@@ -46,23 +49,25 @@ export class FileField extends Component {
 
     xhr.send(formData);
   }
+
   render() {
     const { caption, handleChange } = this.props;
     const file = this.state.files[0];
+
     return (
       <div>
-        <label>
-          { (file? file.name : null) || caption }
-          <input type="file"
-                onChange={this.handleChange.bind(this)} />
-          { (file)
-            ? <img src={URL.createObjectURL(file)} className="preview"/>
-            : <span>preview</span>
-          }
+        <label className={'file-field'}>
+          {/*{ (file? file.name : null) || caption }*/}
+          <div className={"file-caption"}>{ caption }</div>
+          <input className={"file-input"} type="file" onChange={this.handleChange.bind(this)} />
+
+          {/*{ !!file && <img src={URL.createObjectURL(file)} className="preview"/>*/}
+            {/*// : <span>preview</span>*/}
+          {/*}*/}
         </label>
-        <div className="progress">
-          <span>{ this.state.progress }</span>
-        </div>
+        {/*<div className="progress">*/}
+          {/*<span>{ this.state.progress }</span>*/}
+        {/*</div>*/}
       </div>
     );
   }
@@ -71,30 +76,65 @@ export class FileField extends Component {
 class FileForm extends Component {
   constructor() {
     super();
-    this.state = {files: []}
+    this.state = {
+      files: [],
+      requiredDocs: {}
+    }
   }
+
+  componentWillMount(){
+    this.buildRequeridDocs(this.props.application);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.application !== this.props.application)
+      this.buildRequeridDocs(nextProps.application);
+  }
+
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit } = this.props
+      , { requiredDocs } = this.state;
+
     return (
       <div>
-        <h1> Files </h1>
+        <h1> Комплект Документов </h1>
         <Form onSubmit={ handleSubmit }>
-          <Field name="file1"
-                 field={this}
-                 caption="inputfile"
-                 component={ FileField } />
 
-          <Field name="file2"
-                 field={this}
-                 caption="inputfile"
-                 component={ FileField } />
+          {!!Object.keys(requiredDocs).length && Object.keys(requiredDocs).map((doc, index) => {
+            if (requiredDocs[doc])
+              return (
+                <Field name={`file${index}`}
+                       field={this}
+                       caption={documentsNames[doc]}
+                       component={ FileField } />
+              )
+          })}
 
-          <Field name="comment"
-                caption="Комментарий"
-                component={ TextField } />
+          {/*<Field name="comment"*/}
+                {/*caption="Комментарий"*/}
+                {/*component={ TextField } />*/}
         </Form>
       </div>
     );
+  }
+
+  buildRequeridDocs(application){
+    const { quiz, build } = application;
+
+    let requiredDocs = {
+      copiesOfTitleDeeds: true,
+      powerOfAttorney: quiz.representative === 'true',
+      documentOnOwnership: build.exploitation === 'ready',
+      connectionCertificate: quiz.transfer === 'true',
+      concessionAgreement: quiz.transfer === 'true',
+      documentOfReductionInConsumption: quiz.transfer === 'true',
+      contractOfUse: quiz.nko_use === 'true',
+      gasFlowCalculation: quiz.consumption !== 'less5',
+      situationalPlan: true,
+      principalSubscriberAgreement: quiz.not_legal_owner === 'true'
+    };
+
+    this.setState({requiredDocs});
   }
 }
 

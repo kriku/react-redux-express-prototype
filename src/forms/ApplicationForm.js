@@ -80,6 +80,7 @@ class ApplicationForm extends Component {
         }
         { page === 'file' && <FileForm
                                  quiz={ application.quiz }
+                                 application = {application}
                                  onSubmit={ this.submitFile.bind(this) } /> }
       </div>
     );

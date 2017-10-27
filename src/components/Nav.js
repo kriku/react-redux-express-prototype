@@ -56,7 +56,10 @@ class Nav extends Component {
     return (
       <div className="navbar">
         <div className="logo">Логотип</div>
-        <div className="right">
+          {/*<button onClick={ this.loadFrom.bind(this) }>load</button>*/}
+          {/*<button onClick={ this.saveTo.bind(this) }>save</button>*/}
+          {/*<button onClick={ this.test.bind(this, access_token) }>test</button>*/}
+      <div className="right">
         {(signin) && <span>
             <NavLink className="button" exact to="/services">
               Сервисы
