@@ -67,7 +67,12 @@ class Nav extends Component {
             </NavLink>
         </span>}
 
+
+
         <div className="right">
+          {/*<button onClick={ this.loadFrom.bind(this) }>load</button>*/}
+          {/*<button onClick={ this.saveTo.bind(this) }>save</button>*/}
+          {/*<button onClick={ this.test.bind(this, access_token) }>test</button>*/}
         {(signin)
          ? <span>
           { username }

@@ -64,3 +64,16 @@
   max-height: 6em;
   max-width: 6em;
 }
+
+.file-field{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.file-caption{
+    min-width: 500px;
+    max-width: 500px;
+    margin-right: 25px;
+}
