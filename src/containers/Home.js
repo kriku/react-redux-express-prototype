@@ -1,17 +1,21 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-
-import App from '../components/App';
-import Login from './/Login';
-import Services from '../components/Services';
 import { connect } from 'react-redux';
+
+// Containers
+import App from './App';
+import Login from './Login';
+import Profile from './Profile';
 import Application from './Application';
 import Applications from './Applications';
+
+// Components
 import Nav from '../components/Nav';
-import {PrivateRoute} from "../components/PrivateRoute";
+import Services from '../components/Services';
+import {PrivateRoute} from '../components/PrivateRoute';
 
 class Home extends Component {
 
@@ -26,6 +30,7 @@ class Home extends Component {
           <Nav/>
           <Route exact path="/" component={App}/>
           <Route path="/login" component={Login}/>
+          <PrivateRoute path="/profile" isLogined={signin} component={Profile}/>
           <PrivateRoute path="/services" isLogined={signin} component={Services}/>
           <PrivateRoute path="/applications" isLogined={signin} component={Applications}/>
           <PrivateRoute path="/application/:id" isLogined={signin} component={Application}/>

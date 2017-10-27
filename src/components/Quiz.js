@@ -18,7 +18,6 @@ const validate = values => {
   required('applicant');
   required('representative');
   required('consumption');
-  required('owner');
   required('transfer');
   required('nko_use');
   required('not_legal_owner');
@@ -104,26 +103,6 @@ class Quiz extends Component {
                  value="idk"
                  component={RadioField} />
           <ConsumptionMessage />
-        </div>
-        <p>
-          Владелец сетей газораспределения АО “Газпром ТрансГаз Казань”?
-        </p>
-        <div>
-          <Field name="owner"
-                 caption="Да"
-                 type="radio"
-                 value="true"
-                 component={RadioField} />
-          <Field name="owner"
-                 caption="Нет"
-                 type="radio"
-                 value="false"
-                 component={RadioField} />
-          <Field name="owner"
-                 caption="Не знаю"
-                 type="radio"
-                 value="idk"
-                 component={RadioField} />
         </div>
         <p>
           Предполагается ли уступка права на использование мощности?

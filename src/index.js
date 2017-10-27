@@ -11,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 const root = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
-   <Home />
+    <Home />
   </Provider>, root);
 
 // debug
