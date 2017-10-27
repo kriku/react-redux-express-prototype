@@ -7,8 +7,6 @@ import {
 } from 'redux-form';
 import { Redirect } from 'react-router';
 import { signin } from '../actions/user';
-import axios from 'axios';
-import store from '../store';
 import * as loginApi from "../actions/user";
 
 const validate = values => {
@@ -59,53 +57,20 @@ const LoginForm = reduxForm({
 
 class Login extends Component {
   submit(data) {
-    const { createSession } = this.props.actions;
-
-    console.log(data.username);
-    console.log(data.password);
-
-    createSession(data)
-
-    // const register = (data) => {
-    //   signin(data);
-    //
-    //   // axios({
-    //   //   method: 'post',
-    //   //   url: '/users',
-    //   //   data: data
-    //   // }).then((res) => {
-    //   //   console.log('/users', res);
-    //   //   store.dispatch(signin(data.username, data.password, res.data));
-    //   // }).catch((error) => {
-    //   //   console.log('/users', error.response);
-    //   //   /* store.dispatch(signin(data.username, data.password));*/
-    //   // });
-    // };
-
-    // axios({
-    //   method: 'post',
-    //   url: '/sessions/create',
-    //   data: data
-    // }).then((res) => {
-    //   console.log('/session/create', res);
-    //   store.dispatch(signin(data.username, data.password, res.data));
-    // }).catch((error) => {
-    //   const { response } = error;
-    //   console.log(response);
-    //   register(data);
-    // });
-    /* this.props.dispatch(signin(data));*/
+    this.props.actions.createSession(data)
   }
 
   render() {
-    const { signin } = this.props.user;
-    return (
+    const { signin } = this.props.user,
+          { from } = this.props.location.state || { from: { pathname: '/' }};
+
+      return (
       <div>
         {(!signin)
           ? <div className="App center">
             <LoginForm onSubmit={ this.submit.bind(this) }/>
           </div>
-          : <Redirect to="/" />
+          : <Redirect to={from} />
         }
       </div>
     );
