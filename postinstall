@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ln -s ../src/store.js node_modules/store
+ln -s ../src/utils.js node_modules/utils
+ln -s ../src/actions node_modules/actions
+ln -s ../src/reducers node_modules/reducers
+ln -s ../src/text node_modules/text

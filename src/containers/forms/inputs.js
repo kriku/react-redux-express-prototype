@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/inputs.css';
+import './inputs.css';
 
 
 export class RadioField extends Component {

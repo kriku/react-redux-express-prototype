@@ -1,26 +1,38 @@
 import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Containers
 import Login from './Login';
 import Profile from './Profile';
+import Services from './Services';
 import Application from './Application';
 import Applications from './Applications';
 
 // Components
-import App from '../components/App';
-import Nav from '../components/Nav';
-import Services from '../components/Services';
-import {PrivateRoute} from '../components/PrivateRoute';
+import App from './components/App';
+import Nav from './components/Nav';
+
+const PrivateRoute = ({ component: Component, isLogined, ...rest}) => (
+  <Route {...rest} render={props => (
+    isLogined ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: {from: props.location}
+      }}/>
+    )
+  )}/>
+);
 
 class Home extends Component {
 
   render() {
-
     const { signin = false } = this.props.user;
 
     return (
@@ -42,5 +54,4 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ user }) => ({ user });
-
 export default connect(mapStateToProps)( Home );

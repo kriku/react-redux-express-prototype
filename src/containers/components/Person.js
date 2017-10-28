@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field} from 'redux-form';
-import {required} from "../utils";
-import { TextField } from '../components/inputs.js';
+import { required } from 'src/utils';
+import { TextField } from '../inputs';
 
 export const Person = (props) => (
   <div>

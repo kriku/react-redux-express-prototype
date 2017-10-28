@@ -1,3 +1,80 @@
+Current structure
+
+```
+(client)
+
+.
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src
+│   ├── actions
+│   │   ├── applications.js
+│   │   └── user.js
+│   ├── constants
+│   │   ├── applications.js
+│   │   └── user.js
+│   ├── reducers
+│   │   ├── applications.js
+│   │   ├── index.js
+│   │   └── user.js
+│   ├── text
+│   │   ├── documents.js
+│   │   └── quiz.js
+│   ├── containers
+│   │   ├── components
+│   │   │   ├── App.css
+│   │   │   ├── App.js
+│   │   │   ├── Footer.css
+│   │   │   ├── Footer.js
+│   │   │   ├── Nav.css
+│   │   │   ├── Nav.js
+│   │   │   ├── Notifications.js
+│   │   │   ├── Person.js
+│   │   │   ├── Tp.js
+│   │   │   └── Tu.js
+│   │   ├── forms
+│   │   │   ├── sections
+│   │   │   │   ├── Address.js
+│   │   │   │   ├── Construction.js
+│   │   │   │   ├── Legal.js
+│   │   │   │   └── Person.js
+│   │   │   ├── ApplicationForm.css
+│   │   │   ├── ApplicationForm.js
+│   │   │   ├── BaseForm.js
+│   │   │   ├── BuildForm.js
+│   │   │   ├── FileField.js
+│   │   │   ├── FileForm.js
+│   │   │   ├── inputs.css
+│   │   │   ├── inputs.js
+│   │   │   ├── Quiz.css
+│   │   │   └── Quiz.js
+│   │   ├── Application.js
+│   │   ├── Applications.css
+│   │   ├── Applications.js
+│   │   ├── Home.js
+│   │   ├── Login.css
+│   │   ├── Login.js
+│   │   ├── Profile.js
+│   │   └── Services.js
+│   ├── index.css
+│   ├── index.js
+│   ├── registerServiceWorker.js
+│   ├── store.js
+│   └── utils.js
+├── tests
+│   └── App.test.js
+├── package.json
+├── postinstall
+├── README.md
+├── yarn-error.log
+└── yarn.lock
+
+
+```
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import {
   Form, Field, reduxForm, getFormSyncErrors, formValues
 } from 'redux-form';
+
 import { connect } from 'react-redux';
 import { RadioField } from './inputs';
+
 import {
   quizErrorMessages, quizMessages
-} from '../validation/quiz';
+} from 'text/quiz';
+
 import './Quiz.css';
 
 const validate = values => {

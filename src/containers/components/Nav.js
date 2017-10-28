@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { loadFromStorage } from '../actions/applications.js';
-import { logout } from '../actions/user.js';
 
-import store from '../store';
-import '../style/Nav.css';
+import store from 'store';
+import { logout } from 'actions/user.js';
+
+import './Nav.css';
 
 
 class Nav extends Component {
@@ -17,7 +17,7 @@ class Nav extends Component {
 
   render() {
     const count = this.props.applications.length;
-    const { signin, username } = this.props.user;
+    const { signin } = this.props.user;
     return (
       <div className="navbar">
         <div className="logo">Логотип</div>

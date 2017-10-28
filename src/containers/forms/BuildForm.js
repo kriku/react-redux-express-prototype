@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {
   Form,
-  Field,
   FormSection,
   reduxForm
 } from 'redux-form';
 
-import Address from './sections/Address';
+import { Address } from './sections/Address';
 import Construction from './sections/Construction';
 
 

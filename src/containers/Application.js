@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
-import ApplicationForm from './ApplicationForm';
+import ApplicationForm from './forms/ApplicationForm';
 
 const mstp = ({ applications }) => ({ applications });
 const FormOrRedirect = connect(mstp)((props) => {

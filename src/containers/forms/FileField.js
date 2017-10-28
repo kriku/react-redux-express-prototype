@@ -43,8 +43,7 @@ export default class FileField extends Component {
   }
 
   render() {
-    const { caption, handleChange } = this.props;
-    const file = this.state.files[0];
+    const { caption } = this.props;
 
     return (
       <div>

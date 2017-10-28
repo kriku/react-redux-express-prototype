@@ -6,7 +6,7 @@ import {
   reduxForm
 } from 'redux-form';
 import { Redirect } from 'react-router';
-import { signin } from '../actions/user';
+/* import { signin } from '../actions/user';*/
 import * as loginApi from "../actions/user";
 
 const validate = values => {

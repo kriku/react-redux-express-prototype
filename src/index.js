@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Home from "./containers/Home"
+import Home from './containers/Home';
 
-import './style/index.css';
+import './index.css';
 
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';
@@ -14,6 +14,5 @@ ReactDOM.render(
     <Home />
   </Provider>, root);
 
-// debug
 registerServiceWorker();
 window.store = store;
