@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
-import Quiz from './Quiz.js';
-import store from '../store';
-import { addDraftToApplications } from '../actions/applications';
+import Quiz from './forms/Quiz.js';
+import store from 'store';
+import { addDraftToApplications } from 'actions/applications';
 
 class Tu extends Component {
   constructor() {

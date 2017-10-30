@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
+import {
+  Field,
+  formValues,
+  FormSection
+} from 'redux-form';
 import { TextField } from '../inputs';
 
 const required = value => (value ? undefined : 'Required');
 
-export default class Address extends Component {
+export class Address extends Component {
   render() {
     return (
       <div>
@@ -40,3 +44,13 @@ export default class Address extends Component {
     );
   }
 }
+
+export const OtherAddress = formValues({same: 'address.same'})((props) => {
+  if (!props.same)
+    return (
+      <FormSection name="address.real">
+        <Address />
+      </FormSection>
+    );
+  return null;
+});

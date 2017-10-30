@@ -7,11 +7,12 @@ import {
 } from 'redux-form';
 
 import { TextField, CheckField } from './inputs.js';
-import Address from './sections/Address';
-import {Person} from './Person'
-import {required} from '../utils';
-import {Legal} from './sections/Legal'
-import {RealAddress} from './sections/RealAddress'
+
+import { required } from 'utils';
+
+import { Legal } from './sections/Legal';
+import { Person } from './sections/Person';
+import { Address, OtherAddress } from './sections/Address';
 
 class Application extends Component {
 
@@ -43,18 +44,18 @@ class Application extends Component {
                required={true}
                component={ TextField } />
 
-        <h3> Юридический адрес </h3>
+        <h3> Адрес </h3>
         <FormSection name="address.legal">
           <Address />
         </FormSection>
 
-        <h3> Фактический адрес </h3>
+        <h3> Почтовый адрес </h3>
         <p>
           <Field name="address.same"
                 caption="Совпадает с юридическим"
                 component={ CheckField } />
         </p>
-        <RealAddress />
+        <OtherAddress />
 
         <hr/>
         <button className="primary" type="submit">

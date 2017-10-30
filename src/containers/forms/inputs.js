@@ -1,6 +1,57 @@
 import React, { Component } from 'react';
+import './inputs.css';
 
-export default class FileField extends Component {
+export class RadioField extends Component {
+  render() {
+    const { input, caption } = this.props;
+    return (
+      <div className="input-group-radio">
+        <label>
+          <input {...input} checked={input.checked} type="radio"/>
+          <span>
+            { caption }
+          </span>
+        </label>
+      </div>
+    );
+  }
+}
+
+export class CheckField extends Component {
+  render() {
+    const { input, caption } = this.props;
+    return (
+      <div className="input-group-checkbox">
+        <label>
+          <input {...input} checked={input.value} type="checkbox"/>
+          <span>
+            { caption }
+          </span>
+        </label>
+      </div>
+    );
+  }
+}
+
+export class TextField extends Component {
+  render() {
+    const { input, caption, required, meta } = this.props;
+    return (
+      <div className="input-group">
+        <label>
+          <span className={(required)?'required':''}>
+            { caption }
+          </span>
+          <input {...input}
+                 className={(meta.touched && meta.invalid)?'invalid':''}
+                 type="text"/>
+        </label>
+      </div>
+    );
+  }
+}
+
+export class FileField extends Component {
 
   constructor() {
     super();
@@ -14,11 +65,11 @@ export default class FileField extends Component {
     console.log('fileField', this);
     const files = e.target.files;
     this.setState({ files });
-    let formData = new FormData();
+    const formData = new FormData();
     console.log(files);
     formData.append('file', files[0]);
     formData.append('filename', this.props.input.name);
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     const that = this;
 
     // your url upload
@@ -43,8 +94,7 @@ export default class FileField extends Component {
   }
 
   render() {
-    const { caption, handleChange } = this.props;
-    const file = this.state.files[0];
+    const { caption } = this.props;
 
     return (
       <div>
@@ -53,7 +103,7 @@ export default class FileField extends Component {
           <input className={"file-input"} type="file" onChange={this.handleChange.bind(this)} />
 
           {/*{ !!file && <img src={URL.createObjectURL(file)} className="preview"/>*/}
-          {/*// : <span>preview</span>*/}
+          {/* : <span>preview</span>*/}
           {/*}*/}
         </label>
         {/*<div className="progress">*/}

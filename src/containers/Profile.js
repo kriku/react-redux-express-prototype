@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Profile extends Component {
   render() {
+    const { user: { username } } = this.props;
     return (
-      <h1> Profile </h1>
+      <div>
+        <h1> Profile </h1>
+        email: { username }
+      </div>
     );
   }
 }
 
-export default Profile;
+const mstp = ({ user }) => ({ user });
+export default connect(mstp)( Profile );

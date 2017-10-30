@@ -1,3 +1,72 @@
+### Current structure
+
+```
+
+.
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src
+│   ├── actions
+│   │   ├── applications.js
+│   │   └── user.js
+│   ├── constants
+│   │   ├── applications.js
+│   │   └── user.js
+│   ├── containers
+│   │   ├── forms
+│   │   │   ├── sections
+│   │   │   │   ├── Address.js
+│   │   │   │   ├── Construction.js
+│   │   │   │   ├── Legal.js
+│   │   │   │   └── Person.js
+│   │   │   ├── ApplicationForm.css
+│   │   │   ├── ApplicationForm.js
+│   │   │   ├── BaseForm.js
+│   │   │   ├── BuildForm.js
+│   │   │   ├── FileForm.js
+│   │   │   ├── inputs.css
+│   │   │   ├── inputs.js
+│   │   │   ├── Quiz.css
+│   │   │   └── Quiz.js
+│   │   ├── Application.js
+│   │   ├── Applications.css
+│   │   ├── Applications.js
+│   │   ├── Home.css
+│   │   ├── Home.js
+│   │   ├── Home.test.js
+│   │   ├── Login.css
+│   │   ├── Login.js
+│   │   ├── Nav.css
+│   │   ├── Nav.js
+│   │   ├── Notifications.js
+│   │   ├── Profile.js
+│   │   ├── Root.js
+│   │   ├── Services.js
+│   │   └── Tu.js
+│   ├── reducers
+│   │   ├── applications.js
+│   │   ├── index.js
+│   │   └── user.js
+│   ├── text
+│   │   ├── documents.js
+│   │   └── quiz.js
+│   ├── index.css
+│   ├── index.js
+│   ├── registerServiceWorker.js
+│   ├── store.js
+│   └── utils.js
+├── package.json
+├── postinstall
+├── README.md
+├── yarn-error.log
+└── yarn.lock
+
+
+```
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Home from "./containers/Home"
+import Root from './containers/Root';
 
-import './style/index.css';
+import './index.css';
 
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';
@@ -11,9 +11,8 @@ import registerServiceWorker from './registerServiceWorker';
 const root = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
-    <Home />
+    <Root />
   </Provider>, root);
 
-// debug
 registerServiceWorker();
 window.store = store;

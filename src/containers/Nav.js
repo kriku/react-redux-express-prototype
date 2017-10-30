@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import { loadFromStorage } from '../actions/applications.js';
-import { logout } from '../actions/user.js';
+import { NavLink, Link } from 'react-router-dom';
+import store from 'store';
+import { logout } from 'actions/user.js';
 
-import store from '../store';
-import '../style/Nav.css';
-
+import './Nav.css';
 
 class Nav extends Component {
   logout() {
@@ -17,10 +15,10 @@ class Nav extends Component {
 
   render() {
     const count = this.props.applications.length;
-    const { signin, username } = this.props.user;
+    const { signin } = this.props.user;
     return (
-      <div className="navbar">
-        <div className="logo">Логотип</div>
+      <div class="navbar">
+        <Link className="logo" to="/"> Логотип </Link>
 
         <div className="right">
           {(signin)
@@ -49,7 +47,6 @@ class Nav extends Component {
               Уведомления <span>(0)</span>
             </NavLink>
         </div>}
-
       </div>
     );
   }

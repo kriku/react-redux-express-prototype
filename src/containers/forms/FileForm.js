@@ -4,8 +4,8 @@ import {
   Field,
   reduxForm
 } from 'redux-form';
-import { documentsNames } from "../localization/Documents"
-import FileField from "./FileField"
+import { documentsNames } from 'text/documents';
+import { FileField } from './inputs';
 
 class FileForm extends Component {
   constructor() {
@@ -26,8 +26,8 @@ class FileForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
-      , { requiredDocs } = this.state;
+    const { handleSubmit } = this.props;
+    const { requiredDocs } = this.state;
 
     return (
       <div>
@@ -42,6 +42,7 @@ class FileForm extends Component {
                        caption={documentsNames[doc]}
                        component={ FileField } />
               )
+             return null;
           })}
         </Form>
       </div>
