@@ -1,0 +1,5 @@
+{
+  "secret": "JWT Secret (public_key?)",
+  "audience": "",
+  "issuer": ""
+}
