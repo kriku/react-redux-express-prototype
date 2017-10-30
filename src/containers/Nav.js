@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { NavLink, Link } from 'react-router-dom';
-import store from 'store';
-import { logout } from 'actions/user.js';
+import { logout } from 'actions/user';
 
 import './Nav.css';
 
 class Nav extends Component {
-  logout() {
-    store.dispatch(logout());
-    this.props.history.push('/');
-  }
-
   render() {
     const count = this.props.applications.length;
     const { signin } = this.props.user;
@@ -26,7 +20,7 @@ class Nav extends Component {
              <NavLink className="button" to="/profile">
                Профиль
               </NavLink>
-              <button className="button" onClick={this.logout.bind(this)}>
+              <button className="button" onClick={this.props.logout}>
                 Выйти
               </button>
            </span>
@@ -53,4 +47,5 @@ class Nav extends Component {
 }
 
 const mstp = ({ user, applications }) => ({ user, applications });
-export default withRouter(connect(mstp)( Nav ));
+const mdtp = ({ logout });
+export default withRouter(connect(mstp, mdtp)( Nav ));
