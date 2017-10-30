@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import './Home.css';
 
 class Home extends Component {
@@ -10,7 +9,6 @@ class Home extends Component {
           <h1 className="App-title">Газпром Трансгаз Казань</h1>
         </header>
         <h3>Описание возможностей портала</h3>
-        <Redirect to="/login" />
       </div>
     );
   }
