@@ -6,7 +6,8 @@ import {
   reduxForm
 } from 'redux-form';
 import { Redirect } from 'react-router';
-import * as user from 'actions/user';
+import { login } from 'actions/user';
+import { Preprops } from 'utils';
 
 const validate = values => {
   const errors = {};
@@ -40,7 +41,8 @@ const LoginForm = reduxForm({
   validate: validate
 })(props => {
   console.log(props);
-  return <div style={{marginTop: "6em"}}>
+  return (
+  <div style={{marginTop: "6em"}}>
     <form onSubmit={ props.handleSubmit } style={{display: "inline-block"}}>
       <Field name="username"
              label="Почта"
@@ -51,22 +53,26 @@ const LoginForm = reduxForm({
       <button type="submit">Войти</button>
     </form>
   </div>
+  )
 });
 
 class Login extends Component {
   submit(data) {
-    this.props.actions.login(data)
+    this.props.login(data);
   }
 
   render() {
-    const { signin } = this.props.user,
-          { from } = this.props.location.state || { from: { pathname: '/' }};
+    const { signin } = this.props.user;
+    const { from } = this.props.location.state || { from: { pathname: '/' }};
+    console.log(this.props);
 
+      // TODO: change divs to components
       return (
       <div>
         {(!signin)
-          ? <div className="App center">
+          ? <div className="App">
               <LoginForm onSubmit={ this.submit.bind(this) }/>
+              <Preprops {...this.props} />
             </div>
           : <Redirect to={from} />
         }
@@ -76,12 +82,5 @@ class Login extends Component {
 }
 
 const mstp = ({ user }) => ({ user });
-
-const mdtp = (dispatch) => {
-    const actions = user;
-    return {
-        actions: bindActionCreators(actions, dispatch),
-    }
-}
-
+const mdtp = ({ login });
 export default connect(mstp, mdtp)( Login );
