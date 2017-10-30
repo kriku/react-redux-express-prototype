@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
-import Quiz from '../forms/Quiz.js';
+import Quiz from './forms/Quiz.js';
 import store from 'store';
 import { addDraftToApplications } from 'actions/applications';
 

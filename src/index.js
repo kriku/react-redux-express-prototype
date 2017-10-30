@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Home from './containers/Home';
+import Root from './containers/Root';
 
 import './index.css';
 
@@ -11,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 const root = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
-    <Home />
+    <Root />
   </Provider>, root);
 
 registerServiceWorker();

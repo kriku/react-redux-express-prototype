@@ -1,6 +1,6 @@
 import {
     USER_SIGNIN, USER_SIGNUP, USER_LOGOUT, USER_REGISTER_FAILED, USER_CREATE_SESSION_FAILED
-} from "../constants/user";
+} from 'constants/user';
 
 export function signup(username, password, data) {
   return {
@@ -30,7 +30,7 @@ function signin({ username, password, data, dispatch }) {
   });
 }
 
-export function createSession(body) {
+export function login(body) {
   return (dispatch) => {
 
     const headers = new Headers({
@@ -46,7 +46,7 @@ export function createSession(body) {
 
     const { username, password } = body;
 
-    fetch(`/api/sessions/create`, init)
+    fetch('/api/login', init)
       .then(data => data.json())
       .then(data => signin({username, password, data, dispatch}))
       .catch(err => {
@@ -74,7 +74,7 @@ function register(body, dispatch){
   };
 
   const { username, password } = body;
-  fetch(`/api/users`, init)
+  fetch(`/api/register`, init)
     .then(data => data.json())
     .then(data => signin({username, password, data, dispatch}))
     .catch(err => {

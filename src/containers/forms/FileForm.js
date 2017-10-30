@@ -5,7 +5,7 @@ import {
   reduxForm
 } from 'redux-form';
 import { documentsNames } from 'text/documents';
-import FileField from './FileField';
+import { FileField } from './inputs';
 
 class FileForm extends Component {
   constructor() {

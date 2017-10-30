@@ -1,6 +1,6 @@
 import {
     USER_SIGNIN, USER_SIGNUP, USER_LOGOUT
-} from "../constants/user";
+} from 'constants/user';
 
 const initialState = {};
 

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import Tu from './components/Tu';
-import Tp from './components/Tp';
+import Tu from './Tu';
 
 class Services extends Component {
   render() {
@@ -13,12 +12,7 @@ class Services extends Component {
         <Link to='/services/tu' className='h2'>
           Запрос о предоставлении технических условий
         </Link>
-        <Route
-            path={match.url + '/tu'}
-            component={Tu} />
-        <Route
-            path={match.url + '/another'}
-            component={Tp} />
+        <Route path={match.url + '/tu'} component={Tu} />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { required } from 'utils';
-import { TextField } from '../inputs.js';
+import { TextField } from '../inputs';
 
 export const Legal = (props) => (
   <div>

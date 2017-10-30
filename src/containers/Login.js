@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
+import { bindActionCreators } from 'redux';
 import {
   Field,
   reduxForm
 } from 'redux-form';
 import { Redirect } from 'react-router';
-/* import { signin } from '../actions/user';*/
-import * as loginApi from "../actions/user";
+import * as user from 'actions/user';
 
 const validate = values => {
   const errors = {};
@@ -17,7 +16,6 @@ const validate = values => {
   errors.password = (!values.password)
   ? 'Введите пароль'
   : null;
-  console.log('validate', errors);
   return errors;
 };
 
@@ -57,7 +55,7 @@ const LoginForm = reduxForm({
 
 class Login extends Component {
   submit(data) {
-    this.props.actions.createSession(data)
+    this.props.actions.login(data)
   }
 
   render() {
@@ -68,8 +66,8 @@ class Login extends Component {
       <div>
         {(!signin)
           ? <div className="App center">
-            <LoginForm onSubmit={ this.submit.bind(this) }/>
-          </div>
+              <LoginForm onSubmit={ this.submit.bind(this) }/>
+            </div>
           : <Redirect to={from} />
         }
       </div>
@@ -77,13 +75,13 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mstp = ({ user }) => ({ user });
 
-function mapDispatchToProps(dispatch) {
-    const actions = loginApi;
+const mdtp = (dispatch) => {
+    const actions = user;
     return {
         actions: bindActionCreators(actions, dispatch),
     }
 }
 
-export default connect(mapStateToProps ,mapDispatchToProps)( Login );
+export default connect(mstp, mdtp)( Login );
