@@ -69,9 +69,8 @@ class Login extends Component {
       return (
       <div>
         {(!signin)
-          ? <div className="App">
+          ? <div className="App center">
               <LoginForm onSubmit={ this.submit.bind(this) }/>
-              <Preprops {...this.props} />
             </div>
           : <Redirect to={from} />
         }

@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler());
 }
 
-// app.use('/static', express.static('../client/build/static'));
 
 app.post('/upload', upload.single('file'), function(req, res, next) {
   console.log(req.file);
@@ -47,10 +46,14 @@ app.post('/upload', upload.single('file'), function(req, res, next) {
   res.status(200).send('ok').end();
 });
 
-
 app.use(require('./user-routes'));
 app.use(require('./protected-routes'));
 app.use(require('./anonymous-routes'));
+
+app.use('/static', express.static('build/static'));
+app.get('*', function(req, res) {
+  res.sendfile('build/index.html');
+});
 
 var port = process.env.PORT || 3001;
 
