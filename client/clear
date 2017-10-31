@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm node_modules/store
+rm node_modules/utils
+rm node_modules/constants
+rm node_modules/reducers
+rm node_modules/actions
+rm node_modules/text

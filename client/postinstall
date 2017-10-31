@@ -1,8 +1,27 @@
 #!/bin/sh
 
-ln -s ../src/store.js node_modules/store
-ln -s ../src/utils.js node_modules/utils
-ln -s ../src/constants node_modules/constants
-ln -s ../src/actions node_modules/actions
-ln -s ../src/reducers node_modules/reducers
-ln -s ../src/text node_modules/text
+function create_link
+{
+    if [ ! -L "node_modules/$1" ]
+    then
+        if [ -f "src/$1.js" ]
+        then
+           ln -s "../src/$1.js" "node_modules/$1"
+        fi
+
+        if [ -d "src/$1" ]
+        then
+            ln -s "../src/$1" "node_modules/$1"
+        fi
+
+    else
+        echo "link already created ($1)"
+    fi
+}
+
+create_link "store"
+create_link "utils"
+create_link "constants"
+create_link "actions"
+create_link "reducers"
+create_link "text"
